@@ -10,6 +10,8 @@ namespace Project2.Movements
     {
         Rigidbody _rigidbody;
 
+        public bool CanJump => _rigidbody.velocity.y != 0f;
+
 
         public JumpWithRigidbody(PlayerController playerController)
         {
@@ -18,9 +20,7 @@ namespace Project2.Movements
 
         public void TickFixed(float jumpForce)
         {
-            if (_rigidbody.velocity.y != 0) return;
-
-            Debug.Log(_rigidbody.velocity);
+            if (CanJump) return;
 
 
             _rigidbody.velocity = Vector3.zero;

@@ -15,12 +15,13 @@ namespace Project2.Controllers
         
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _jumpForce = 300f;
-        [SerializeField] bool _isJump;
+        
 
         HorizontalMover _horizontalMover;
         JumpWithRigidbody _jump;
         IInputReader _input;
         float _horizontal;
+        bool _isJump;
 
 
         private void Awake()
@@ -32,7 +33,13 @@ namespace Project2.Controllers
 
         private void Update()
         {
+            
             _horizontal = _input.Horizontal;
+
+            if (_input.IsJump)
+            {
+                _isJump = true;
+            }
         }
 
 
