@@ -12,7 +12,7 @@ namespace Project2.Controllers
     {
 
 
-        
+        [SerializeField] float _moveBoundary = 4.5f;
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _jumpForce = 300f;
         
@@ -22,6 +22,9 @@ namespace Project2.Controllers
         IInputReader _input;
         float _horizontal;
         bool _isJump;
+
+        public float MoveSpeed => _moveSpeed;
+        public float MoveBoundary => _moveBoundary;
 
 
         private void Awake()
@@ -45,7 +48,7 @@ namespace Project2.Controllers
 
         private void FixedUpdate()
         {
-            _horizontalMover.TickFixed(_horizontal,_moveSpeed);
+            _horizontalMover.TickFixed(_horizontal);
 
             if (_isJump)
             {

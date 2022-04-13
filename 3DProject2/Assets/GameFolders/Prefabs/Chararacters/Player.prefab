@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 10
   _jumpForce: 1500
-  _isJump: 0
 --- !u!54 &3376759461014702884
 Rigidbody:
   m_ObjectHideFlags: 0
