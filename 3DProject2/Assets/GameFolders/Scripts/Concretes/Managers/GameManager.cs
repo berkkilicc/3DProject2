@@ -8,6 +8,9 @@ namespace Project2.Managers
 {
     public class GameManager : SingletonNoboBehaviorObject<GameManager>
     {
+        public event System.Action OnGameStop;
+
+
         void Awake()
         {
             SingletonThisObject(this);
@@ -16,6 +19,14 @@ namespace Project2.Managers
         public void StopGame()
         {
             Time.timeScale = 0f;
+            OnGameStop?.Invoke();
+
+            //if (OnGameStop !=null)
+            //{
+            //    OnGameStop();
+            //}
+
+
         }
 
         public void LoadScene()
