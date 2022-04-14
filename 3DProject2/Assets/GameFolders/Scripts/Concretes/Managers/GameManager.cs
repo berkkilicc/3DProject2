@@ -17,6 +17,21 @@ namespace Project2.Managers
             Time.timeScale = 0f;
         }
 
+        public void LoadScene()
+        {
+            //load islemleri
+            Debug.Log("Load Scene clicked");
+
+
+        }
+
+        public void ExitGame()
+        {
+            Debug.Log("Exit on clicked");
+            Application.Quit();
+        }
+
+
     }
 
 }
