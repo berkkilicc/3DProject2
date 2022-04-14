@@ -1,5 +1,6 @@
 using Project2.Abstracts.Inputs;
 using Project2.Inputs;
+using Project2.Managers;
 using Project2.Movements;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Project2.Controllers
         IInputReader _input;
         float _horizontal;
         bool _isJump;
+        bool _isDead = false;
 
         public float MoveSpeed => _moveSpeed;
         public float MoveBoundary => _moveBoundary;
@@ -36,7 +38,10 @@ namespace Project2.Controllers
 
         private void Update()
         {
-            
+            if (_isDead) return;
+           
+
+
             _horizontal = _input.Horizontal;
 
             if (_input.IsJump)
@@ -59,8 +64,19 @@ namespace Project2.Controllers
             _isJump = false;
 
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            EnemyController enemyController = other.GetComponent<EnemyController>();
 
-       
+            if (enemyController !=null)
+            {
+                _isDead = true;
+
+                GameManager.Instance.StopGame();
+            }
+
+        }
+
 
     }
 }
