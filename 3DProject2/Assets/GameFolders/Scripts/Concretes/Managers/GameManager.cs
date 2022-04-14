@@ -2,6 +2,7 @@ using Project2.Abstracts.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Project2.Managers
 {
@@ -20,10 +21,23 @@ namespace Project2.Managers
         public void LoadScene()
         {
             //load islemleri
-            Debug.Log("Load Scene clicked");
+           
 
 
         }
+
+        public void LoadScene(string sceneName)
+        {
+            StartCoroutine(LoadSceneAsync(sceneName));
+        }
+
+
+        private IEnumerator LoadSceneAsync(string SceneName)
+        {
+            Time.timeScale = 1f;
+            yield return SceneManager.LoadSceneAsync(SceneName);
+        }
+        
 
         public void ExitGame()
         {
